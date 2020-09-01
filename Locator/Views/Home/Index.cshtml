@@ -1,0 +1,28 @@
+﻿@model IEnumerable<DatabaseLibrary.Models.Locations>
+@{
+    ViewData["Title"] = "MapHawks Locator";
+}
+ 
+
+<!--
+    main row is split into three columns
+        left-nav        :   Filter-Search Parameters
+        center-index    :   Houses the Map
+        right-sidebar   :   Location Cards
+ -->
+<div class="container-fluid">
+    <div class="row d-block" id="main-row">
+        <div class="col-xs-12 col-md-3 text-left" id="filter-wrapper">
+            <h3 id="filter-head">Refine by</h3>
+            <div id="filterSearch-wrapper"></div>
+        </div>
+        <div class="col-xs-12 col-md-6 text-center" id="center-index">
+            <div class="col-12" id="mapBlock"><p>Map Goes Here</p></div>
+        </div>
+        <div class="col-xs-12 col-md-3 text-left" id="sidebar-wrapper">
+            <h3 id="sidebar-head">ATM Nearby</h3>
+            <div class="col-12" id="cards-wrapper">
+            </div>
+        </div>
+    </div>
+</div>

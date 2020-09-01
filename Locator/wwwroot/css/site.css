@@ -1,0 +1,567 @@
+﻿/**
+*   CSS Selectors flow from top of page down
+*   and left to right
+*
+*   Selector attributes are stacked alphabetically
+*
+*   Media Queries are at the bottom and flow from largest down to smallest
+*/
+
+
+
+blockquote.empty {
+    display: none;
+}
+
+li.empty {
+    display:none;
+}
+
+p.empty {
+    display: none;
+}
+
+span.empty {
+    display: none;
+}
+
+
+
+
+/**
+*   Navbar
+*/
+a.navbar-brand {
+    text-align: center;
+    white-space: normal;
+    word-break: break-all;
+}
+
+.border-top {
+    border-top: 1px solid #e5e5e5;
+}
+
+.border-bottom {
+    border-bottom: 1px solid #e5e5e5;
+}
+
+.box-shadow {
+    box-shadow: 0 .25rem .75rem rgba(0, 0, 0, .05);
+}
+
+button.accept-policy {
+    font-size: 1rem;
+    line-height: inherit;
+}
+
+body {
+    margin-bottom: 60px;
+}
+
+html {
+    color: #4D5F69;
+    font-size: 14px;
+    min-height: 100%;
+    position: relative;
+}
+
+#nav-logo {
+    height: auto;
+    max-width: 12rem;
+}
+
+
+
+/**
+*   Main Page
+*/
+#main-row {
+    padding-top: 1rem;
+}
+
+
+
+
+/**
+*   Left Column
+*/
+#filter-wrapper {
+    float: none;
+    position: relative;
+    width: 100%;
+}
+
+#filter-head {
+    color: #192838;
+    text-align: left;
+}
+
+#filterSearch-wrapper {
+    color: #4D5F69;
+    font: Museo Sans 700;
+    font-size: 1.4rem;
+}
+
+#filterSearch-wrapper a.btn-link .panelTitleBox {
+    display: inline-block;
+    font-size: 1.8rem;
+}
+
+#filterSearch-wrapper a.btn-link .panel-name {
+    color: #192838;
+}
+
+#filterSearch-wrapper form.searchATM fieldset.atmSearch {
+    padding-top: 1rem;
+    padding-left: 1rem;
+}
+
+#filterSearch-wrapper form.searchNFC fieldset.nfcSearch {
+    padding-top: 1rem;
+    padding-left: 1rem;
+}
+
+
+
+/**
+*   Center Column
+*/
+#center-index {
+    float: none;
+    position: relative;
+    width: 70%;
+}
+
+#mapBlock {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 90%;
+}
+
+#map-wrapper {
+    height: 600px;
+    margin: auto;
+    width: 100%;
+}
+
+#mapBlock #directionsPanel {
+    background-color: #F4F5F5;
+    border-color: #4D5F69;
+    color: #192838;
+    float: right;
+    height: 100%;
+    width: 80%;
+}
+
+
+
+/**
+*   Right Column
+*/
+#sidebar-wrapper {
+    float: none;
+    position: relative;
+    width: 1000%;
+}
+
+#sidebar-wrapper #sidebar-head {
+    color: #192838;
+    text-align: center;
+}
+
+#sidebar-wrapper .card {
+    color: #4D5F69;
+    font: Museo Sans 700;
+    stroke: #D5D7D9;
+}
+
+div.card.border-dark {
+    border-color: #D5D7D9 !important;
+    border-style:groove;
+    border-width: 0.1rem;
+}
+
+div#sidebar-wrapper div.card p {
+    color: #4D5F69;
+    font-size: 1.2rem;
+    margin: 0;
+}
+
+#sidebar-wrapper .card .card-header {
+    background-color: #EAEBEC;
+}
+
+div.card-header a.btn-link {
+    color: #006979;
+    display: inline-block;
+    font-size: 1.6rem;
+}
+
+div.card-header a.btn-link div.cardTitleBox {
+    color: #006979;
+    display: inline-block;
+    font-size: 1.6rem;
+}
+
+div.card-header a.btn-link div.cardTitleBox span.card-title {
+    color: #006979;
+    font: Museo Sans 700;
+}
+
+btn-link:hover {
+    text-decoration: none;
+}
+a:hover {
+    text-decoration: none;
+}
+
+div.card div.card-header a.btn-link:hover span.card-name {
+    color: #006979;
+}
+
+div.card div.card-header a.btn-link span.cardTitleBox i.fas {
+    color: #006979;
+    display: inline-block;
+    padding-right: 5px;
+}
+
+div.card-header a.btn-link:hover {
+    text-decoration: none;
+}
+
+div#card-wrapper div.card div.card-header a.btn-link:hover span.cardTitleBox i.fas {
+    text-decoration: none;
+}
+
+span.card-name:hover {
+    text-decoration: underline;
+}
+
+div.card div.card-header a.btn-link span.cardTitleBox i.fa-plus {
+    display: none;
+}
+
+div.card div.card-header a.btn-link[aria-expanded="false"] span.cardTitleBox i.fa-plus {
+    display: initial;
+}
+
+div.card div.card-header a.btn-link[aria-expanded="false"] span.cardTitleBox i.fa-minus {
+    display: none;
+}
+
+div#card-wrapper div.card div.card-header a.btn-link:checked span.cardTitleBox i.fas {
+    text-decoration: none;
+}
+
+div#card-wrapper div.card div.card-header a.btn-link:visited span.cardTitleBox i.fas {
+    text-decoration: none;
+}
+
+div#card-wrapper div.card div.card-header a.btn-link:after span.cardTitleBox i.fas {
+    text-decoration: none;
+}
+
+#sidebar-wrapper div.card .card-body {
+    background-color: #F4F5F5;
+}
+
+#sidebar-wrapper .card .card-body div.card-subtitle {
+    padding-bottom: 1rem;
+}
+
+#sidebar-wrapper .card div.card-subtitle a.webAddressLink {
+    color: #006979;
+}
+
+#sidebar-wrapper .card div.card-subtitle a.phoneLink {
+    color: #006979;
+}
+
+#sidebar-wrapper .card div.card-subtitle a.webAddressLink:hover {
+    text-decoration: underline;
+}
+
+#sidebar-wrapper .card div.card-subtitle a.phoneLink:hover {
+    text-decoration: underline;
+}
+
+#sidebar-wrapper .card .contactInfo span.cardTitleBox {
+    color: #192838;
+    font-size: 1.6rem;
+}
+
+#sidebar-wrapper div.card .card-body ul.list-group {
+    background-color: #FFFFFF;
+}
+
+#sidebar-wrapper div.card div.card-footer {
+    background-color: #F4F5F5;
+}
+
+
+
+
+/**
+*   card classes for hide/display
+*/
+
+.hideByText, hideResultsMessage, .hideByHours, .hideByDriveThruOnly, .hideBySurcharge, .hideByAcceptDeposit, .hideByCoinStar, .hideByTellerServices, .hideBy_24hourExpressBox, .hideByPartnerCreditUnion, .hideByMemberConsultant, .hideByInstantDebitCardReplacement {
+    display: none;
+}
+
+
+
+
+/**
+*   bootstrap collapse setting for large screens
+*/
+#filterSearch-wrapper .panel-header {
+    position: relative;
+    text-decoration: none;
+}
+
+#filterSearch-wrapper a:after {
+    position: absolute;
+}
+
+#filterSearch-wrapper .collapse:not(.show) {
+    display: block;
+}
+
+
+
+/**
+*   grid areas for responsive screens
+*/
+div#filter-wrapper.col {
+    grid-area: filter;
+}
+
+div#center-index.col {
+    grid-area: map;
+}
+
+div#sidebar-wrapper.col {
+    grid-area: sidebar;
+}
+
+.grid {
+    grid-template-areas: 'map' 'filter' 'sidebar';
+}
+
+div#filter-wrapper {
+    width: 100%;
+}
+
+div#center-index {
+    width: 100%;
+}
+
+div#sidebar-wrapper {
+    width: 100%;
+}
+
+
+
+
+
+/**
+*   Media queries xlarge screens
+*/
+@media (max-width: 1400px) {
+
+    #mapBlock {
+        width: 90%;
+    }
+}
+
+/**
+*   Media queries large screens
+*/
+@media (max-width: 1200px) {
+
+    #mapBlock {
+        width: auto;
+    }
+}
+
+@media (min-width: 1200px) {
+
+    .container {
+        max-width: 100%;
+    }
+}
+
+
+/**
+*   Media Query micro adjustment from large to mid
+*/
+@media (max-width: 1100px) {
+    #filterSearch-wrapper {
+        color: #4D5F69;
+        font: Museo Sans 700;
+        font-size: 1.2rem;
+    }
+
+    #filterSearch-wrapper a.btn-link .panelTitleBox {
+        display: inline-block;
+        font-size: 1.6rem;
+    }
+}
+
+
+/** Defines the left hand column on screens larger than mobile **/
+@media (min-width: 992px) {
+
+    .container {
+        max-width: 100%;
+    }
+
+    div#cards-wrapper {
+        height: 725px;
+        overflow-x: hidden;
+        overflow-y: scroll;
+    }
+
+    #filterSearch-wrapper .panel-header a.btn-link {
+        cursor: default;
+        display: inline-block;
+        pointer-events: none;
+    }
+
+    #filterSearch-wrapper .panel-header a.btn-link .fas {
+        display: none;
+    }
+
+    #filterSearch-wrapper .panel-header a.btn-link .fa-plus {
+        display: none;
+    }
+
+    #filterSearch-wrapper .panel-header a.btn-link .fa-minus {
+        display: none;
+    }
+}
+
+
+
+
+/**
+*   Media queries mid screens
+*/
+@media (max-width: 992px) {
+
+    /**  align all three columns to the same width when they stack on mobile-sm **/
+    div.col-12 {
+        padding-left: 0;
+        padding-right: 0;
+    }
+
+    /** setting for the left-hand column as it migrates below the map on mobile sm screens**/
+    div#filter-wrapper {
+        padding-top: 1rem;
+        padding-bottom: 1rem;
+    }
+
+    /** center index will need padding as it stack on the top **/
+    div#center-index {
+        padding-bottom: 1rem;
+    }
+
+    /** hide the h3 filter header on mobile **/
+    h3#filter-head {
+        display: none;
+    }
+
+    /** hide the h3 sidebar header on mobile **/
+    h3#sidebar-head {
+        display: none;
+    }
+
+    /** on mobile the keyword search and filter search accordion need breathing room **/
+    div.panel#atm-panel {
+        padding-top: 0.5rem;
+        padding-bottom: 0.25rem;
+    }
+
+    /** setting for left nav collapsable show on mobile **/
+    #filterSearch-wrapper .panel-header a.btn-link .panelTitleBox {
+        color: #006979;
+        font-size: 1.6rem;
+    }
+
+    /** setting for left nav collapsable show on mobile **/
+    #filterSearch-wrapper .panel-header a.btn-link .panel-name {
+        color: #006979;
+    }
+
+    /** setting for left nav collapsable show on mobile **/
+    #filterSearch-wrapper .panel-header a.btn-link .panel-name:hover {
+        text-decoration: underline;
+    }
+
+    /** setting for left nav collapsable show on mobile **/
+    #filterSearch-wrapper .panel-header a.btn-link:after {
+        display: none;
+    }
+
+    /** setting for left nav collapsable show on mobile **/
+    #filterSearch-wrapper .panel .collapse:not(.show) {
+        display: none;
+    }
+
+    /** setting for left nav collapsable show on mobile **/
+    #filterSearch-wrapper .panel-header a.btn-link .fas {
+        display: inline-block;
+        padding-right: 5px;
+    }
+
+    /** setting for left nav collapsable show on mobile **/
+    #filterSearch-wrapper .panel-header a.btn-link .fa-plus {
+        display: none;
+    }
+
+    /** setting for left nav collapsable show on mobile **/
+    #filterSearch-wrapper .panel-header a.btn-link[aria-expanded="false"] .fa-plus {
+        display: initial;
+    }
+
+    /** setting for left nav collapsable show on mobile **/
+    #filterSearch-wrapper .panel-header a.btn-link[aria-expanded="false"] .fa-minus {
+        display: none;
+    }
+
+    /** setting for left nav collapsable show on mobile **/
+    #filterSearch-wrapper .panel-body {
+        color: #4D5F69;
+        font-size: 1.2rem;
+    }
+}
+
+
+@media (min-width: 576px) {
+
+    .container {
+        max-width: 100%;
+    }
+}
+
+
+
+
+/**
+*   Sticky footer styles
+*/
+.footer {
+    bottom: 0;
+    color: #4D5F69;
+    height: 60px;
+    line-height: 60px;
+    position: absolute;
+    width: 100%;
+    white-space: nowrap;
+}
+
+.footer #privacy-link {
+    color: #006979;
+}
