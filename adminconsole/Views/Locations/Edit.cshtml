@@ -1,0 +1,418 @@
+﻿@model adminconsole.Models.AllTablesViewModel
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Edit</h1>
+
+<hr />
+      
+<div id="form-wrapper">
+    <form asp-action="Edit">
+        <div class="row">
+            <!--               1st Panel               -->
+            <div id="panel1" class="col-md-3 col-12-s col-xs-12">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <input type="hidden" asp-for="LocationId" value="@Model.LocationId" />
+                <input type="hidden" asp-for="CoopLocationId" value="@Model.CoopLocationId" class="form-control" />
+                <div class="form-group">
+                    <label asp-for="TakeCoopData" class="control-label d-flex"></label>
+                    <select asp-for="TakeCoopData" class="ml-auto">
+                        <option selected="selected" value="">Select</option>
+                        <option value="@BooleanEnum.N">No</option>
+                        <option value="@BooleanEnum.Y">Yes</option>
+                    </select>
+                    <span asp-validation-for="TakeCoopData" class="text-danger"></span>
+                </div>
+                <div class="form-group d-flex">
+                    <label asp-for="SoftDelete" class="control-label"></label>
+                    <select asp-for="SoftDelete" class="ml-auto" disabled>
+                        <option selected="selected" value="@Model.SoftDelete">@BooleanEnumExtensions.GetDisplayName(Model.SoftDelete)</option>
+                    </select>
+                    <span asp-validation-for="SoftDelete" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Name" class="control-label"></label>
+                    <span class="text-danger ml-1">*</span>
+                    <input asp-for="Name" class="form-control" />
+                    <span asp-validation-for="Name" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Address" class="control-label"></label>
+                    <span class="text-danger ml-1">*</span>
+                    <input asp-for="Address" class="form-control" />
+                    <span asp-validation-for="Address" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="City" class="control-label"></label>
+                    <span class="text-danger ml-1">*</span>
+                    <input asp-for="City" class="form-control" />
+                    <span asp-validation-for="City" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="County" class="control-label"></label>
+                    <input asp-for="County" class="form-control" />
+                    <span asp-validation-for="County" class="text-danger"></span>
+                </div>
+                <div class="form-group d-flex">
+                    <label asp-for="State" class="control-label"></label>
+                    <span class="text-danger ml-1">*</span>
+                    <select asp-for="State" asp-items="Html.GetEnumSelectList<StateEnum>()" class="ml-auto">
+                        <option selected="selected" value="@Model.State">@Html.DisplayFor(model => model.State)</option>
+                    </select>
+                    <span asp-validation-for="State" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="PostalCode" class="control-label"></label>
+                    <span class="text-danger ml-1">*</span>
+                    <input asp-for="PostalCode" class="form-control" />
+                    <span asp-validation-for="PostalCode" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Country" class="control-label"></label>
+                    <input asp-for="Country" class="form-control" />
+                    <span asp-validation-for="Country" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Hours" class="control-label"></label>
+                    <input asp-for="Hours" class="form-control" />
+                    <span asp-validation-for="Hours" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="RetailOutlet" class="control-label"></label>
+                    <input asp-for="RetailOutlet" class="form-control" />
+                    <span asp-validation-for="RetailOutlet" class="text-danger"></span>
+                </div>
+                <div class="form-group d-flex">
+                    <label asp-for="LocationType" class="control-label"></label>
+                    <span class="text-danger ml-1">*</span>
+                    <select asp-for="LocationType" asp-items="Html.GetEnumSelectList<LocationTypeEnum>()" class="ml-auto">
+                        <option selected="selected">Select Location Type</option>
+                    </select>
+                    <span asp-validation-for="LocationType" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Phone" class="control-label"></label>
+                    <input asp-for="Phone" class="form-control" />
+                    <span asp-validation-for="Phone" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Fax" class="control-label"></label>
+                    <input asp-for="Fax" class="form-control" />
+                    <span asp-validation-for="Fax" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="WebAddress" class="control-label"></label>
+                    <input asp-for="WebAddress" class="form-control" />
+                    <span asp-validation-for="WebAddress" class="text-danger"></span>
+                </div>
+            </div>
+
+            <!--               2nd Panel               -->
+            <div id="panel2" class="col-md-3 col-12-s col-xs-12">
+                <div class="form-group">
+                    <label asp-for="RestrictedAccess" class="control-label"></label>
+                    <select asp-for="RestrictedAccess" asp-items="Html.GetEnumSelectList<BooleanEnum>()">
+                        <option selected="selected" value="">Select</option>
+                    </select>
+                    <span asp-validation-for="RestrictedAccess" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="AcceptDeposit" class="control-label"></label>
+                    <select asp-for="AcceptDeposit" asp-items="Html.GetEnumSelectList<BooleanEnum>()">
+                        <option selected="selected" value="">Select</option>
+                    </select>
+                    <span asp-validation-for="AcceptDeposit" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="AcceptCash" class="control-label"></label>
+                    <select asp-for="AcceptCash" asp-items="Html.GetEnumSelectList<BooleanEnum>()">
+                        <option selected="selected" value="">Select</option>
+                    </select>
+                    <span asp-validation-for="AcceptCash" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="EnvelopeRequired" class="control-label"></label>
+                    <select asp-for="EnvelopeRequired" asp-items="Html.GetEnumSelectList<BooleanEnum>()">
+                        <option selected="selected" value="">Select</option>
+                    </select>
+                    <span asp-validation-for="EnvelopeRequired" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="OnMilitaryBase" class="control-label"></label>
+                    <select asp-for="OnMilitaryBase" asp-items="Html.GetEnumSelectList<BooleanEnum>()">
+                        <option selected="selected" value="">Select</option>
+                    </select>
+                    <span asp-validation-for="OnMilitaryBase" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="OnPremise" class="control-label"></label>
+                    <select asp-for="OnPremise" asp-items="Html.GetEnumSelectList<BooleanEnum>()">
+                        <option selected="selected" value="">Select</option>
+                    </select>                <span asp-validation-for="OnPremise" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Surcharge" class="control-label"></label>
+                    <select asp-for="Surcharge" asp-items="Html.GetEnumSelectList<BooleanEnum>()">
+                        <option selected="selected" value="">Select</option>
+                    </select>                <span asp-validation-for="Surcharge" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Access" class="control-label"></label>
+                    <select asp-for="Access" asp-items="Html.GetEnumSelectList<BooleanEnum>()">
+                        <option selected="selected" value="">Select</option>
+                    </select>                <span asp-validation-for="Access" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="AccessNotes" class="control-label"></label>
+                    <input asp-for="AccessNotes" class="form-control" />
+                    <span asp-validation-for="AccessNotes" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="InstallationType" class="control-label"></label>
+                    <input asp-for="InstallationType" class="form-control" />
+                    <span asp-validation-for="InstallationType" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="HandicapAccess" class="control-label"></label>
+                    <select asp-for="HandicapAccess" asp-items="Html.GetEnumSelectList<BooleanEnum>()">
+                        <option selected="selected" value="">Select</option>
+                    </select>                <span asp-validation-for="HandicapAccess" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Cashless" class="control-label"></label>
+                    <select asp-for="Cashless" asp-items="Html.GetEnumSelectList<BooleanEnum>()">
+                        <option selected="selected" value="">Select</option>
+                    </select>                <span asp-validation-for="Cashless" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="DriveThruOnly" class="control-label"></label>
+                    <select asp-for="DriveThruOnly" asp-items="Html.GetEnumSelectList<BooleanEnum>()">
+                        <option selected="selected" value="">Select</option>
+                    </select>                <span asp-validation-for="DriveThruOnly" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="LimitedTransactions" class="control-label"></label>
+                    <select asp-for="LimitedTransactions" asp-items="Html.GetEnumSelectList<BooleanEnum>()">
+                        <option selected="selected" value="">Select</option>
+                    </select>                <span asp-validation-for="LimitedTransactions" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="MilitaryIdRequired" class="control-label"></label>
+                    <select asp-for="MilitaryIdRequired" asp-items="Html.GetEnumSelectList<BooleanEnum>()">
+                        <option selected="selected" value="">Select</option>
+                    </select>                <span asp-validation-for="MilitaryIdRequired" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="SelfServiceDevice" class="control-label"></label>
+                    <select asp-for="SelfServiceDevice" asp-items="Html.GetEnumSelectList<BooleanEnum>()">
+                        <option selected="selected" value="">Select</option>
+                    </select>                <span asp-validation-for="SelfServiceDevice" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="SelfServiceOnly" class="control-label"></label>
+                    <select asp-for="SelfServiceOnly" asp-items="Html.GetEnumSelectList<BooleanEnum>()">
+                        <option selected="selected" value="">Select</option>
+                    </select>
+                    <span asp-validation-for="SelfServiceOnly" class="text-danger"></span>
+                </div>
+            </div>
+
+
+            <!--               3rd Panel               -->
+            <div id="panel3" class="col-md-3 col-12-s col-xs-12">
+                <div class="form-group">
+                    <label asp-for="HoursMonOpen" class="control-label"></label>
+                    <input asp-for="HoursMonOpen" class="form-control" />
+                    <span asp-validation-for="HoursMonOpen" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="HoursMonClose" class="control-label"></label>
+                    <input asp-for="HoursMonClose" class="form-control" />
+                    <span asp-validation-for="HoursMonClose" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="HoursTueOpen" class="control-label"></label>
+                    <input asp-for="HoursTueOpen" class="form-control" />
+                    <span asp-validation-for="HoursTueOpen" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="HoursTueClose" class="control-label"></label>
+                    <input asp-for="HoursTueClose" class="form-control" />
+                    <span asp-validation-for="HoursTueClose" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="HoursWedOpen" class="control-label"></label>
+                    <input asp-for="HoursWedOpen" class="form-control" />
+                    <span asp-validation-for="HoursWedOpen" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="HoursWedClose" class="control-label"></label>
+                    <input asp-for="HoursWedClose" class="form-control" />
+                    <span asp-validation-for="HoursWedClose" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="HoursThuOpen" class="control-label"></label>
+                    <input asp-for="HoursThuOpen" class="form-control" />
+                    <span asp-validation-for="HoursThuOpen" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="HoursThuClose" class="control-label"></label>
+                    <input asp-for="HoursThuClose" class="form-control" />
+                    <span asp-validation-for="HoursThuClose" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="HoursFriOpen" class="control-label"></label>
+                    <input asp-for="HoursFriOpen" class="form-control" />
+                    <span asp-validation-for="HoursFriOpen" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="HoursFriClose" class="control-label"></label>
+                    <input asp-for="HoursFriClose" class="form-control" />
+                    <span asp-validation-for="HoursFriClose" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="HoursSatOpen" class="control-label"></label>
+                    <input asp-for="HoursSatOpen" class="form-control" />
+                    <span asp-validation-for="HoursSatOpen" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="HoursSatClose" class="control-label"></label>
+                    <input asp-for="HoursSatClose" class="form-control" />
+                    <span asp-validation-for="HoursSatClose" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="HoursSunOpen" class="control-label"></label>
+                    <input asp-for="HoursSunOpen" class="form-control" />
+                    <span asp-validation-for="HoursSunOpen" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="HoursSunClose" class="control-label"></label>
+                    <input asp-for="HoursSunClose" class="form-control" />
+                    <span asp-validation-for="HoursSunClose" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="HoursDtmonOpen" class="control-label"></label>
+                    <input asp-for="HoursDtmonOpen" class="form-control" />
+                    <span asp-validation-for="HoursDtmonOpen" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="HoursDtmonClose" class="control-label"></label>
+                    <input asp-for="HoursDtmonClose" class="form-control" />
+                    <span asp-validation-for="HoursDtmonClose" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="HoursDttueOpen" class="control-label"></label>
+                    <input asp-for="HoursDttueOpen" class="form-control" />
+                    <span asp-validation-for="HoursDttueOpen" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="HoursDttueClose" class="control-label"></label>
+                    <input asp-for="HoursDttueClose" class="form-control" />
+                    <span asp-validation-for="HoursDttueClose" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="HoursDtwedOpen" class="control-label"></label>
+                    <input asp-for="HoursDtwedOpen" class="form-control" />
+                    <span asp-validation-for="HoursDtwedOpen" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="HoursDtwedClose" class="control-label"></label>
+                    <input asp-for="HoursDtwedClose" class="form-control" />
+                    <span asp-validation-for="HoursDtwedClose" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="HoursDtthuOpen" class="control-label"></label>
+                    <input asp-for="HoursDtthuOpen" class="form-control" />
+                    <span asp-validation-for="HoursDtthuOpen" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="HoursDtthuClose" class="control-label"></label>
+                    <input asp-for="HoursDtthuClose" class="form-control" />
+                    <span asp-validation-for="HoursDtthuClose" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="HoursDtfriOpen" class="control-label"></label>
+                    <input asp-for="HoursDtfriOpen" class="form-control" />
+                    <span asp-validation-for="HoursDtfriOpen" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="HoursDtfriClose" class="control-label"></label>
+                    <input asp-for="HoursDtfriClose" class="form-control" />
+                    <span asp-validation-for="HoursDtfriClose" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="HoursDtsatOpen" class="control-label"></label>
+                    <input asp-for="HoursDtsatOpen" class="form-control" />
+                    <span asp-validation-for="HoursDtsatOpen" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="HoursDtsatClose" class="control-label"></label>
+                    <input asp-for="HoursDtsatClose" class="form-control" />
+                    <span asp-validation-for="HoursDtsatClose" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="HoursDtsunOpen" class="control-label"></label>
+                    <input asp-for="HoursDtsunOpen" class="form-control" />
+                    <span asp-validation-for="HoursDtsunOpen" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="HoursDtsunClose" class="control-label"></label>
+                    <input asp-for="HoursDtsunClose" class="form-control" />
+                    <span asp-validation-for="HoursDtsunClose" class="text-danger"></span>
+                </div>
+
+            </div>
+
+
+            <!--               4th Panel               -->
+            <div id="panel4" class="col-md-3 col-12-s col-xs-12">
+
+                <div id="mapBlock">
+
+                    <div class="d-block" id="map-wrapper"></div>
+
+
+                    <div class="form-group">
+                        <label asp-for="Latitude" class="control-label"></label>
+                        <input asp-for="Latitude" class="form-control" value="@Model.Latitude" />
+                        <span asp-validation-for="Latitude" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Longitude" class="control-label"></label>
+                        <input asp-for="Longitude" class="form-control" value="@Model.Longitude" />
+                        <span asp-validation-for="Longitude" class="text-danger"></span>
+                    </div>
+
+                    <button type="button" id="getLatLongBtn" onclick="getLatLongFromAddress()">Drop Pin</button>
+
+                </div>
+
+            </div>
+
+        </div>
+            
+        <div class="form-group">
+            <input type="submit" value="Save" class="btn btn-primary" />
+        </div>
+    </form>
+</div>
+
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAR_KkOxYdpXhbRLPAvidcUJdfeXHHHAew&" async defer></script>
+
+    <script>
+        $(function () {
+            $(window).on('load', function () {
+                initMap();
+            });
+        });
+    </script>
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

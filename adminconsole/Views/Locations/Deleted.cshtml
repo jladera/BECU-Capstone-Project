@@ -1,0 +1,95 @@
+﻿@model IEnumerable<DatabaseLibrary.Models.Locations>
+
+@{
+    ViewData["Title"] = "Previously Deleted";
+}
+
+<table class="table table-bordered table-striped"
+       id="table"
+       data-search="true"
+       data-height="500"
+       data-show-search-clear-button="true"
+       data-show-export="true"
+       data-sort-stable="true"
+       data-virtual-scroll="true">
+
+    <thead>
+        <tr>
+            <th>
+                Controls
+            </th>
+            <th data-field="Name" data-sortable="true">
+                @Html.DisplayNameFor(model => model.Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.LocationType)
+            </th>
+            <th data-field="Address" data-sortable="true">
+                @Html.DisplayNameFor(model => model.Address)
+            </th>
+            <th data-field="City" data-sortable="true">
+                @Html.DisplayNameFor(model => model.City)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PostalCode)
+            </th>
+            <th data-field="State" data-sortable="true">
+                @Html.DisplayNameFor(model => model.State)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Latitude)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Longitude)
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    <a asp-action="DeletedDetails" asp-route-id="@item.LocationId" value="@item.LocationId">Details</a> |
+                    <a asp-action="Recover" asp-route-id="@item.LocationId">Recover</a>
+                </td>
+                <td>
+                    @if (item.Name == "BECU")
+                    {
+                        <img src="~/media/BEC-Logo-Icon-pms.png" />
+                    }
+                    else
+                    {
+                        <img src="~/media/logo_co-op.png" style="height: 40px;" />
+                    }
+                    @Html.DisplayFor(modelItem => item.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.LocationType)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Address)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.City)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.PostalCode)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.State)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Latitude)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Longitude)
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+@section scripts {
+    <script src="~/js/TableDataExportHelper.js"></script>
+    <script src="~/js/ChangeSearchClearIcon.js"></script>
+}

@@ -1,0 +1,160 @@
+﻿@using  Locator.Models;
+@model CleanLocationViewModel
+
+@{
+    ViewData["Title"] = "MapHawks";
+}
+
+<script type="text/javascript" src="~/js/location.js"></script>
+<script type="text/javascript">
+    getLocation()
+</script>
+
+
+<!--
+    main row is split into three columns
+        filter-wrapper  :   Left    :   Filter-Search Parameters
+        center-index    :   Center  :   Houses the Map
+        sidebar-wrapper :   Right   :   Location Cards
+ -->
+<div class="container-fluid">
+    <div class="row" id="main-row">
+        <div class="col-xs-12 order-2 col-lg-3 order-lg-first" id="filter-wrapper">
+            <h3 id="filter-head">Refine by</h3>
+            <div id="filterSearch-wrapper">
+                <form class="searchField d-block">
+                    <fieldset class="atmSearch">
+                        <div>
+                            <input type="text" class="form-control" name="searchCards" id="keyword_search" placeholder="Search by Keyword" autofocus aria-label="Search Keyword" />
+                        </div>
+                    </fieldset>
+                </form>
+                <div class="text-left accordion panel" id="atm-panel">
+                    <div class="panel-header">
+                        <a href="#" class="btn-link" id="atm-locations" data-toggle="collapse" data-target="#atm-qualities" aria-expanded="false" aria-controls="atm-qualities">
+                            <span class="panelTitleBox">
+                                <i class="fas fa-minus"></i><i class="fas fa-plus"></i>
+                                <span class="panel-name">Show ATMs With...</span>
+                            </span>
+                        </a>
+                    </div>
+                    <div class="panel-body collapse in" id="atm-qualities" aria-expanded="false">
+                        <form class="searchATM d-block">
+                            <fieldset class="atmSearch">
+                                <div>
+                                    <input type="checkbox" id="Hours" name="24hrs / Business Hours Access" value="24">
+                                    <label for="Hours">24 Hour</label>
+                                </div>
+                                <div>
+                                    <input type="checkbox" id="DriveThruOnly" name="Drive Thru Only" value="Drive">
+                                    <label for="DriveThruOnly">Drive Up</label>
+                                </div>
+                                <div>
+                                    <input type="checkbox" id="Surcharge" name="Surcharge" value="No">
+                                    <label for="Surcharge">Surcharge Free</label>
+                                </div>
+                                <div>
+                                    <input type="checkbox" id="AcceptDeposit" name="Accepts Deposit" value="Yes">
+                                    <label for="AcceptDeposit">Accepts Deposits</label>
+                                </div>
+                            </fieldset>
+                        </form>
+                    </div>
+                    <div class="text-left accordion panel" id="nfs-header">
+                        <!-- this accordion functions only below 767px for mobile -->
+                        <div class="panel-header">
+                            <a href="#" class="btn-link" id="nfc-locations" data-toggle="collapse" data-target="#nfs-qualities" aria-expanded="false" aria-controls="nfs-qualities">
+                                <span class="panelTitleBox">
+                                    <i class="fas fa-minus"></i><i class="fas fa-plus"></i>
+                                    <span class="panel-name">Show Branchs With...</span>
+                                </span>
+                            </a>
+                        </div>
+                        <div class="panel-body collapse in" id="nfs-qualities" aria-expanded="false">
+                            <form class="searchNFC d-block">
+                                <fieldset class="nfcSearch">
+                                    <div>
+                                        <input type="checkbox" id="NFCDriveThruOnly" name="Drive Thru Only" value="Y">
+                                        <label for="NFVDriveThruOnly">Drive Up</label>
+                                    </div>
+                                    <div>
+                                        <input type="checkbox" id="CoinStar" name="Coin Star" value="Y">
+                                        <label for="CoinStar">Coin Star</label>
+                                    </div>
+
+                                    <div>
+                                        <input type="checkbox" id="TellerServices" name="Teller Services" value="Y">
+                                        <label for="TellerServices">Teller Services</label>
+                                    </div>
+                                    <div>
+                                        <input type="checkbox" id="_24hourExpressBox" name="24 Hour Express Box" value="Y">
+                                        <label for="_24hourExpressBox">24 Hour Express Box</label>
+                                    </div>
+                                    <div>
+                                        <input type="checkbox" id="PartnerCreditUnion" name="Partner Credit Union" value="N">
+                                        <label for="PartnerCreditUnion">Partner Credit Unions</label>
+                                    </div>
+                                    <div>
+                                        <input type="checkbox" id="MemberConsultant" name="Member Consultant" value="Y">
+                                        <label for="MemberConsultant">Member Consultant</label>
+                                    </div>
+                                    <div>
+                                        <input type="checkbox" id="InstantDebitCardReplacement" name="Instant Debit Card Replacement" value="Y">
+                                        <label for="InstantDebitCardReplacement">Card Replacement</label>
+                                    </div>
+                                </fieldset>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-xs-12 order-first order-lg-2 col-lg-6"  id="center-index">
+            <div class="col-12 text-center" id="mapBlock">
+                <div class="d-block" id="map-wrapper" style="position: relative; overflow: hidden;"></div>
+                <div id="directionsPanel"></div>
+            </div>
+        </div>
+        <div class="col-xs-12 order-last col-lg-3 order-lg-3" id="sidebar-wrapper">
+            <h3 id="sidebar-head">ATM Nearby</h3>
+            <div class="col-12" id="cards-wrapper">
+                @foreach (var card in Model.CleanLocationList)
+                {
+                    <div class="card border-dark rounded-0 accordion" id="id-@card.LocationId">
+                        <div class="card-header" id="heading-@card.LocationId">
+                            <a href="#" class="btn-link" id="button-@card.LocationId" data-toggle="collapse" data-target="#collapse-@card.LocationId" aria-expanded="false" aria-controls="collapse-@card.LocationId">
+                                <span class="cardTitleBox">
+                                    <i class="fas fa-minus"></i><i class="fas fa-plus"></i>
+                                    <span class="Name card-title card-name">@card.Name</span>
+                                </span>
+                            </a>
+                            <p class="address" value="@card.Address">@card.Address</p>
+                            <span class="distance">Distance: @card.MyDistance</span>
+                        </div>
+                        <div class="collapse in" id="collapse-@card.LocationId" aria-expanded="false">
+                            <div class="card-body">
+                                <div class="card-subtitle contactInfo">
+                                    <h4 class="card-title contactInfoHeader">Contact Information</h4>
+                                    <p class="name" value="@card.Name">@card.Name</p>
+                                    <a href="tel:@card.Phone" class="phoneLink" target="_blank"><p class="phone" value="@card.Phone">@card.Phone</p></a>
+                                    <p class="address" value="@card.Address">@card.Address</p>
+                                    <p class="city-state-zip">
+                                        <span class="city" value="@card.City">@card.City</span>
+                                        <span>, </span>
+                                        <span class="state" value="@card.State">@card.State </span>
+                                        <span class="postalCode" value="@card.PostalCode">@card.PostalCode</span>
+                                    </p>
+                                    <a href="@card.WebAddress" class="webAddressLink" target="_blank"><p class="webAddress" value="@card.WebAddress">@card.WebAddress</p></a>
+                                    <hr />
+                                    @Html.Raw(card.SubTitleDisplay)
+                                </div>
+                                <ul class="list-group">@Html.Raw(@card.ListBlockDisplay)</ul>
+                            </div>
+                            <div class="card-footer">@Html.Raw(@card.FooterBlockQuoteDisplay)</div>
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+</div>
